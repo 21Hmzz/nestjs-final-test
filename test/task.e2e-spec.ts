@@ -43,7 +43,6 @@ describe('TaskController', () => {
                 userService,
                 taskService,
             );
-
             for (const created of createdElements) {
                 const response = await request(app.getHttpServer()).get(
                     `/task/user/${created.user.id}`,
@@ -129,8 +128,10 @@ describe('TaskController', () => {
 
                 expect(response.status).toBe(201);
 
+                //obligé de changer car deux utilisateurs peuvent avoir le même nom de tâche
                 const task = (await taskService.getTaskByName(
                     payload.name,
+                    createdUser.id,
                 )) as any;
 
                 expect(task).toBeDefined();
@@ -149,7 +150,6 @@ async function createTasksFor2DifferentUsers(
     for (let count = 0; count < 15; count++) {
         await taskService.addTask(`task #${count}`, createdUser1.id, 1);
     }
-
     const createdUser2 = await createUserUsing(userService, 'email_2@test.com');
     for (let count = 0; count < 15; count++) {
         await taskService.addTask(`task #${count}`, createdUser2.id, 1);
