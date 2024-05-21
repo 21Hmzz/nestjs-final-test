@@ -30,11 +30,11 @@ pnpm run test:e2e:postgres
 
 ### Pour installer les dépendances du frontend
 ```bash
-npm install:frontend
+npm run install:frontend
 ```
 ou
 ```bash
-pnpm install:frontend
+pnpm run install:frontend
 ```
 
 ### Pour lancer le serveur et le frontend
