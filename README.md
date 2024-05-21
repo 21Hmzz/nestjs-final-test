@@ -26,5 +26,28 @@ ou
 pnpm run test:e2e:postgres
 ```
 
+### En complément (Frontend next.js) : si vous voulez tester le frontend, il faut relancer le serveur avec la commande start:all
+
+### Pour installer les dépendances du frontend
+```bash
+npm install:frontend
+```
+ou
+```bash
+pnpm install:frontend
+```
+
+### Pour lancer le serveur et le frontend
+```bash
+npm run start:all
+```
+ou
+```bash
+pnpm run start:all
+```
+
+
+
+
 
 
