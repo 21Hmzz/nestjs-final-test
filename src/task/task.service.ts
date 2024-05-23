@@ -25,9 +25,9 @@ export class TaskService {
             );
         }
 
-        const userTask = await this.getTaskByName(name, userId);
+        const userTask = await this.getTaskByName(name);
 
-        if (userTask !== null) {
+        if (userTask !== null && userTask.userId === userId) {
             throw new HttpException('Task already exists', HttpStatus.CONFLICT);
         }
 
@@ -46,12 +46,9 @@ export class TaskService {
         });
     }
 
-    getTaskByName(name: string, userId: number): Promise<Task> {
+    getTaskByName(name: string): Promise<Task> {
         const whereNameIs = Prisma.validator<Prisma.TaskWhereInput>()({
             name: name,
-            AND: {
-                userId: parseInt(userId.toString()),
-            },
         });
 
         return this.databaseService.task.findFirst({

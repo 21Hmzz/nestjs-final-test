@@ -128,10 +128,8 @@ describe('TaskController', () => {
 
                 expect(response.status).toBe(201);
 
-                //obligé de changer car deux utilisateurs peuvent avoir le même nom de tâche
                 const task = (await taskService.getTaskByName(
                     payload.name,
-                    createdUser.id,
                 )) as any;
 
                 expect(task).toBeDefined();
