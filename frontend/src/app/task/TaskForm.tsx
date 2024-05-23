@@ -44,12 +44,18 @@ export function TaskForm({ userId }: { userId: number }) {
                 title: 'Task added successfully',
                 description: 'The task has been added successfully',
             });
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         } else {
             toast.toast({
                 title: 'Task not added',
                 description: res.message,
                 variant: 'destructive',
             });
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         }
     }
 

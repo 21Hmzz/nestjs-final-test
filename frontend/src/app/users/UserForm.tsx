@@ -33,17 +33,23 @@ export function UserForm() {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         const res = await addUser(values);
-        if (res.status === 200) {
+        if (res.id) {
             toast.toast({
                 title: 'User added successfully',
                 description: 'The user has been added successfully',
             });
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         } else {
             toast.toast({
                 title: 'User not added',
                 description: res.message,
                 variant: 'destructive',
             });
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         }
     }
 
